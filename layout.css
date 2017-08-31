@@ -1,0 +1,19 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+.change-output {
+width: 100;
+height: auto;
+margin: 0 auto;
+}
+
+.box{
+    width: 20%;
+    float: left;
+}
+
+.box p{
+    text-align: center;
+}

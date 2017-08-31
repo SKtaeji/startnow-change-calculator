@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="layout.css">
+    <title>Change Calculator</title>
+  </head>
+  <body>
+    <!-- Write your markup here -->
+    <div class="container-fluid">
+      <h1 class="col-sm-12 col-md-12 col-lg-12">Change Calculator</h1>
+    </div>
+    <div class='input-block'>
+      <div class="col-sm-6">
+        <p id="amount-due-input">How much is your total price?</p>
+        <input id='amount-due' type='text'/>
+      </div>
+      <div class="col-sm-6">
+        <p id="amount-given-input">How much did you give?</p>
+        <input id='amount-received' type='text'/>
+      </div>
+    </div>
+    <div>
+      <button id='calculate-change' class="col-sm-12">Change?</button>
+    </div>
+    <div class='change-output'>
+      <div class='box'>
+      <p>Dollar(s)</p>
+      <p id='dollars-output'>0</p>
+      </div>
+      <div class='box'>
+      <p>Quarter(s)</p>        
+      <p id='quarters-output'>0</p>
+      </div>
+      <div class='box'>
+      <p>Dime(s)</p>  
+      <p id='dimes-output'>0</p>
+      </div>
+      <div class='box'>
+      <p>Nickel(s)</p>  
+      <p id='nickels-output'>0</p>
+      </div>
+      <div class='box'>
+      <p>Penny(s)</p>  
+      <p id='pennies-output'>0</p>
+      </div>
+    </div>
+
+    <!-- Don't forget to add your <script> tag here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
