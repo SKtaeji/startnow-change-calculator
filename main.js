@@ -1,43 +1,72 @@
-// Write your JavaScript here
+//Set title and h1 to specified text
+$('title, h1').text('Change Calculator');
+
+//Bind handleClickEvent to button
 var button = document.getElementById('calculate-change');
 button.onclick = handleClickEvent
 
+//Calculates the change due
+function calculateChange(cost, paid) {
 
-function runChange(cost, tendered){
-
-    var changeVal = {
+  var changeObject = {
+    twenties: 0,
+    tens: 0,
+    fives: 0,
     dollars: 0,
     quarters: 0,
     dimes: 0,
     nickels: 0,
     pennies: 0
-};
+  };
 
-    var remain = (Math.floor(parseFloat(tendered) * 100) - Math.floor(parseFloat(cost) * 100));
-    var x = remain;
+  var change = paid - cost;
+  
+  var x = change * 100;
+
+  changeObject.twenties = Math.floor(x / 2000);
+    x = x % 2000;
+
+  changeObject.tens = Math.floor(x / 1000);
+    x = x % 1000;
+
+  changeObject.fives = Math.floor(x / 500);
+    x = x % 500;
+  
+  changeObject.dollars = Math.floor(x / 100);
+    x = x % 100;
+  
+  changeObject.quarters = Math.floor(x / 25);
+    x = x % 25;
+  
+  changeObject.dimes = Math.floor(x / 10);
+    x = x % 10;
+
+  changeObject.nickels = Math.floor(x / 5);
+    x = x % 5;
+    x = x + .01;
     
-    changeVal.dollars = Math.floor(parseInt(x / 100));
-        x = x % 100;
-    changeVal.quarters = Math.floor(parseInt(x / 25));
-        x = x % 25;
-    changeVal.dimes = Math.floor(parseInt(x / 10));
-        x = x % 10;
-    changeVal.nickels = Math.floor(parseInt(x / 5));
-        x = x % 5;
-    changeVal.pennies = Math.floor(parseInt(x / 1));
-        x = x % 1;
+  changeObject.pennies = Math.floor(x / 1);
+    x = x % 1;
 
-    return changeVal;
+ return changeObject;
+
 }
 
-function handleClickEvent(i){
+//Fires when button is clicked
+function handleClickEvent (e){
+
     var cost = $('#amount-due').val();
-    var tendered = $('#amount-received').val();
-    var result = runChange(cost, tendered);
+    var paid = $('#amount-received').val();
+    var result = calculateChange(cost, paid);
+    console.log('result', result);
+   
+    $('#twenty-output').text(result.twenties);
+    $('#ten-output').text(result.tens);
+    $('#five-output').text(result.fives);
     $('#dollars-output').text(result.dollars);
     $('#quarters-output').text(result.quarters);
     $('#dimes-output').text(result.dimes);
     $('#nickels-output').text(result.nickels);
     $('#pennies-output').text(result.pennies);
-}
 
+}
