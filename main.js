@@ -69,4 +69,11 @@ function handleClickEvent (e){
     $('#nickels-output').text(result.nickels);
     $('#pennies-output').text(result.pennies);
 
+    if ((paid - cost) >= 0){
+      $('#calSuccess').show('fade');
+      $('#calDanger').hide('fade');      
+    } else {
+      $('#calDanger').show('fade');
+      $('#calSuccess').hide('fade');
+    }
 }

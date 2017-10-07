@@ -11,57 +11,85 @@
   </head>
   <body>
     <!-- Write your markup here -->
-    <div class="container-fluid">
-      <h1 class="col-sm-12 col-md-12 col-lg-12">Change Calculator</h1>
+    <div class="container">
+      <h2>Change Calculator</h2>
+      <hr>
     </div>
-    <div class='input-block'>
-      <div class="col-sm-6">
-        <p id="amount-due-input">How much is your total price?</p>
-        <input id='amount-due' type='text'/>
+    <div class="row container">
+      <div id="input-display" class="container col-md-4">
+        
+          <div class="panel panel-default">
+            <div class="panel-heading bg-grey">Enter Information</div>
+            <div class="panel-body">
+              <strong id="amount-due-input">How much is due?</strong>
+              <div class="clearfix"></div>
+              <input id='amount-due' type='text'/>
+              <div class="clearfix"></div>
+              <strong id="amount-given-input">How much was received?</strong>
+              <div class="clearfix"></div>
+              <input id='amount-received' type='text'/>
+            </div>  
+            <div class="panel-footer bg-grey">
+                <button id='calculate-change' class="btn btn-primary btn-block">Calculate</button>
+            </div>
+          </div>
+        
       </div>
-      <div class="col-sm-6">
-        <p id="amount-given-input">How much did you give?</p>
-        <input id='amount-received' type='text'/>
-      </div>
+      <div id='output-display' class="container col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div id="calSuccess" class="alert alert-success alert-dismissible collapse">
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success:</strong> Total change due.
+          </div>
+          <div id="calDanger" class="alert alert-danger alert-dismissible collapse">
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Danger:</strong> Additional money owed.
+          </div>
+          <div id='change-output'>
+            <div class='col-md-8'>
+              <div class='row'>
+                <div id="changeBox" class='col-sm-2 well'>
+                  <p>Twenties</p>
+                  <p id='twenty-output'>0</p>
+                </div>
+                <div id="changeBox" class='col-sm-2 well'>
+                  <p>Tens</p>
+                  <p id='ten-output'>0</p>
+                </div>
+                <div id="changeBox" class='col-sm-2 well'>
+                  <p>Fives</p>
+                  <p id='five-output'>0</p>
+                </div>
+              <div id="changeBox" class='col-sm-2 well'>
+                <p>Ones</p>
+                <p id='dollars-output'>0</p>
+              </div>
+            </div>
+              <div class='row'>
+              <div id="changeBox" class='col-sm-2 well'>
+                <p>Quarters</p>        
+                <p id='quarters-output'>0</p>
+              </div>
+              <div id="changeBox" class='col-sm-2 well'>
+                <p>Dimes</p>  
+                <p id='dimes-output'>0</p>
+              </div>
+              <div id="changeBox" class='col-sm-2 well'>
+                <p>Nickels</p>  
+                <p id='nickels-output'>0</p>
+              </div>
+              <div id="changeBox" class='col-sm-2 well'>
+                <p>Pennies</p>  
+                <p id='pennies-output'>0</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>      
     </div>
-    <div>
-      <button id='calculate-change' class="col-sm-12">Change?</button>
-    </div>
-    <div class='change-output'>
-      <div class='box'>
-        <p>$20</p>
-        <p id='twenty-output'>0</p>
-      </div>
-      <div class='box'>
-        <p>$10</p>
-        <p id='ten-output'>0</p>
-      </div>
-      <div class='box'>
-        <p>$5</p>
-        <p id='five-output'>0</p>
-      </div>
-      <div class='box'>
-      <p>$1</p>
-      <p id='dollars-output'>0</p>
-      </div>
-      <div class='box'>
-      <p>Quarter(s)</p>        
-      <p id='quarters-output'>0</p>
-      </div>
-      <div class='box'>
-      <p>Dime(s)</p>  
-      <p id='dimes-output'>0</p>
-      </div>
-      <div class='box'>
-      <p>Nickel(s)</p>  
-      <p id='nickels-output'>0</p>
-      </div>
-      <div class='box'>
-      <p>Penny(s)</p>  
-      <p id='pennies-output'>0</p>
-      </div>
-    </div>
-
+  </div>
     <!-- Don't forget to add your <script> tag here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
