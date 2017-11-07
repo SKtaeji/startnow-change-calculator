@@ -20,16 +20,18 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    loaders: 
+    [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        loaders: ['babel', 'babel-loader'],
+        include: path.join(__dirname, 'src')
       },
       {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]',
-      },
-    ],
+      }
+    ]
   },
 };
