@@ -15,10 +15,15 @@ class App extends Component {
       quarters: 0,
       dimes: 0,
       nickels: 0,
-      pennies: 0
+      pennies: 0,
+      status: 'info',
+      statD: '',
+      alertStat: '',
+      collapse: 'collapse'
     };
     this.handleAppChange = this.handleAppChange.bind(this);
     this.calculateChange = this.calculateChange.bind(this);
+    this.statusCall = this.statusCall.bind(this);
   }
 
   handleAppChange (event) {
@@ -30,7 +35,6 @@ class App extends Component {
   
     var change = this.state.received - this.state.due;
 
-    
     var x = change * 100;
   
     const twenties = Math.floor(x / 2000);
@@ -76,10 +80,44 @@ class App extends Component {
       dimes,
       nickels,
       pennies
-    })   
-     return ;
+    })
+
+    this.statusCall();
   
   }
+
+  statusCall(){
+
+    var change = this.state.received - this.state.due;
+    console.log('Hello guys');
+    
+    if(change > 0) {
+      this.setState({
+      status: "success",
+      statD: "The total change due is ",
+      collapse: '',
+      alertStat: '#calSuccess'
+      })}
+
+      else if (change < 0) {
+        this.setState({
+        status: "danger",
+        statD: "Hold up! You still need ",
+        collapse: '',
+        alertStat: '#calDanger'
+      })}
+
+      else if (change === 0) {
+        this.setState({
+        status: "info",
+        statD: "You get nothing! Good day sir!",
+        collapse: '',
+        alertStat: '#calInfo'
+      })}
+
+    }
+  
+  
   
   render() {
     return (
@@ -87,7 +125,7 @@ class App extends Component {
       <title>Change Calculator</title>
 
       <div className="container">
-        <h2>Change Calculator</h2>
+        <h1>Change Calculator</h1>
         <hr />
       </div>
       <div className="row container">
@@ -101,7 +139,7 @@ class App extends Component {
                 onChange={this.handleAppChange}
                 value={this.state.due} 
                 id="amount-due" 
-                name='due'
+                name='amountDue'
                 type="text" 
                 className="form-control" 
                 placeholder="Enter amount due" />
@@ -112,7 +150,7 @@ class App extends Component {
                 onChange={this.handleAppChange} 
                 value={this.state.received} 
                 id="amount-received" 
-                name='received'
+                name='amountReceived'
                 type="text" 
                 className="form-control" 
                 placeholder="Enter amount paid" />
@@ -125,17 +163,13 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div id="output-display" className="container col-md-8">
+        <div id="output-display" className="container col-md-8 cf">
           <div className="panel panel-default">
             <div className="panel-body">
-              <div id="calSuccess" className="alert alert-success alert-dismissible collapse" role="alert">
-                <button type="button" className="close btn-block" data-dismiss="alert" aria-label="close">
-                  <strong className="small">The total amount due is: </strong>
-                </button></div>
-              <div id="calDanger" className="alert alert-danger alert-dismissible collapse">
-                <button type="button" className="close btn-block" data-dismiss="alert" aria-label="close">
-                  <strong className="small">You still require: </strong>
-                </button></div>
+              <div id={this.state.alertStat} className={`alert alert-${this.state.status} alert-dismissible ${this.state.collapse}`} role="alert">
+                <strong className="small">{this.state.statD} ${this.state.result}</strong>
+              </div>
+              
               <div id="change-output">
                 <div className="row">
                   <div className="col-sm-3 change-box">
